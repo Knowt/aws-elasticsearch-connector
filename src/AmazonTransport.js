@@ -10,7 +10,13 @@ function awaitAwsCredentials (awsConfig) {
 
 module.exports = awsConfig => {
   class AmazonTransport extends Transport {
-    request (params, options = {}, callback = undefined) {}
+    request (params, options = {}, callback = undefined) {
+      if (typeof callback === 'undefined') {
+        return super.request(params, options)
+      } else {
+        super.request(params, options, callback)
+      }
+    }
   }
 
   return AmazonTransport
