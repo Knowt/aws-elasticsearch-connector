@@ -1,8 +1,8 @@
-const { BaseConnection } = require('@elastic/elasticsearch')
+const { Connection } = require('@elastic/elasticsearch')
 const aws4 = require('aws4')
 
 module.exports = awsConfig => {
-  class AmazonConnection extends BaseConnection {
+  class AmazonConnection extends Connection {
     buildRequestObject (params) {
       const req = super.buildRequestObject(params)
 

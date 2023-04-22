@@ -1,7 +1,7 @@
-import {BaseConnection, Transport} from '@elastic/elasticsearch';
+import {Connection, Transport} from '@elastic/elasticsearch';
 
 export type Connector = {
-  Connection: typeof BaseConnection;
+  Connection: typeof Connection;
   Transport: typeof Transport;
 };
 
