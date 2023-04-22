@@ -1,11 +1,17 @@
-import { Connection, Transport } from '@elastic/elasticsearch';
-import AWS from 'aws-sdk';
+import {BaseConnection, Transport} from '@elastic/elasticsearch';
 
 export type Connector = {
-  Connection: typeof Connection;
+  Connection: typeof BaseConnection;
   Transport: typeof Transport;
 };
 
-export const ConnectorFactory: (awsConfig: AWS.Config) => Connector;
+export const ConnectorFactory: (awsConfig: {
+  region: string;
+  credentials: {
+    accessKeyId: string;
+    secretAccessKey: string;
+    sessionToken?: string;
+  }
+}) => Connector;
 
 export default ConnectorFactory;
